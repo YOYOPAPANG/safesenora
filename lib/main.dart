@@ -12,17 +12,19 @@ class MyApp extends StatelessWidget {
   FirebaseUser firebaseUser;
   @override
   Widget build(BuildContext context) {
-   
     FirebaseAuth.instance.currentUser().then((user) {
       firebaseUser = user;
     });
-    
+
     return MaterialApp(
         navigatorKey: globalKey,
-        routes: <String,WidgetBuilder>{
-          "/girlhomepage":(BuildContext context)=> new girlHomeScreen(firebaseUser),
-          "/protectorhomepage":(BuildContext context) => new protectorHomeScreen(firebaseUser),
-          "/protectorgirlscreen":(BuildContext context)=> new protectorHomeScreen(firebaseUser),
+        routes: <String, WidgetBuilder>{
+          "/girlhomepage": (BuildContext context) =>
+              new girlHomeScreen(firebaseUser),
+          "/protectorhomepage": (BuildContext context) =>
+              new protectorHomeScreen(firebaseUser),
+          "/protectorgirlscreen": (BuildContext context) =>
+              new protectorHomeScreen(firebaseUser),
         },
         title: "Prototype",
         debugShowCheckedModeBanner: false,
