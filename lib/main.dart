@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     FirebaseAuth.instance.currentUser().then((user) {
       firebaseUser = user;
     });
-
+//
     return MaterialApp(
         navigatorKey: globalKey,
         routes: <String, WidgetBuilder>{
