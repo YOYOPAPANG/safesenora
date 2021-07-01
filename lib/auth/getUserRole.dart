@@ -66,45 +66,44 @@ class _getUserRoleState extends State<getUserRole> {
                         width: 10,
                       ),
                       Expanded(
-                        child: ButtonTheme(
-                          height: 50,
-                          child: RaisedButton(
-                            elevation: 10,
-                            shape: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.black)),
-                            child: Text("Girl",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white
-                                )),
-                            color: Colors.grey.shade400,
-                            onPressed: () {
-                              //TODO add role in database
-                              //TODO send on girl screen
-                            },
-                          ),
-                        )
-                      ),
+                          child: ButtonTheme(
+                        height: 50,
+                        child: RaisedButton(
+                          elevation: 10,
+                          shape: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black)),
+                          child: Text("Girl",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white)),
+                          color: Colors.grey.shade400,
+                          onPressed: () {
+                            //TODO add role in database
+                            //TODO send on girl screen
+                          },
+                        ),
+                      )),
                       SizedBox(
                         width: 10,
                       ),
                       Expanded(
                           child: ButtonTheme(
-                            height: 50,
-                            child: RaisedButton(
-                              elevation: 10,
-                              shape: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: Colors.black)),
-                              child: Text("Protector",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.white
-                                  )),
-                              color: Colors.grey.shade400,
-                              onPressed: () {
-                                //TODO add role in database
-                                //TODO send on protector screen
-                              },
-                            ),
-                          )),
+                        height: 50,
+                        child: RaisedButton(
+                          elevation: 10,
+                          shape: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black)),
+                          child: Text("Protector",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white)),
+                          color: Colors.grey.shade400,
+                          onPressed: () {
+                            //TODO add role in database
+                            //TODO send on protector screen
+                          },
+                        ),
+                      )),
                       SizedBox(
                         width: 10,
                       ),

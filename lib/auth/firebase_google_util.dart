@@ -25,10 +25,9 @@ class FirebaseGoogleUtil {
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     GoogleSignInAuthentication googleAuth = await googleUser.authentication;
     AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken
-    );
-    final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+    final FirebaseUser user =
+        (await _auth.signInWithCredential(credential)).user;
     print("signed in " + user.displayName);
     assert(user.email != null);
     assert(user.displayName != null);
@@ -45,7 +44,6 @@ class FirebaseGoogleUtil {
   }
 
   void onLoginUserVerified(FirebaseUser currentUser) {
-
     _view.onLoginUserVerified(currentUser);
   }
 

@@ -9,12 +9,11 @@ import 'package:location/location.dart' as location_plugin;
 import 'package:prototype/screens/girl_home_screen.dart';
 
 class girlMapScreen extends StatefulWidget {
-
   @override
   _girlMapScreenState createState() => _girlMapScreenState();
 }
 
-class _girlMapScreenState extends State<girlMapScreen>{
+class _girlMapScreenState extends State<girlMapScreen> {
   double lat, lng;
   static LatLng _center;
   Completer<GoogleMapController> _controller = Completer();
@@ -25,7 +24,7 @@ class _girlMapScreenState extends State<girlMapScreen>{
 
   void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
-    location.getLocation().then((loc){
+    location.getLocation().then((loc) {
       _center = LatLng(loc.latitude, loc.longitude);
     });
   }
@@ -36,22 +35,22 @@ class _girlMapScreenState extends State<girlMapScreen>{
           markerId: MarkerId(_lastmapposition.toString()),
           position: _lastmapposition,
           icon: BitmapDescriptor.defaultMarker));
-
     });
   }
 
   LocationServices() {
-    location.getLocation().then((loc){
+    location.getLocation().then((loc) {
       lat = loc.latitude;
       lng = loc.longitude;
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("View Map"),),
+        appBar: AppBar(
+          title: Text("View Map"),
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -65,13 +64,13 @@ class _girlMapScreenState extends State<girlMapScreen>{
                       color: Colors.black,
                       width: 4,
                     ),
-                    borderRadius: BorderRadius.circular(12.0)
-                ),
+                    borderRadius: BorderRadius.circular(12.0)),
                 child: GoogleMap(
-                  onMapCreated:_onMapCreated,
+                  onMapCreated: _onMapCreated,
                   myLocationEnabled: true,
                   initialCameraPosition: CameraPosition(
-                      target: _center == null ? LatLng(0, 0) : _center, zoom: 12),
+                      target: _center == null ? LatLng(0, 0) : _center,
+                      zoom: 12),
                   compassEnabled: true,
                 ),
               ),
@@ -85,11 +84,11 @@ class _girlMapScreenState extends State<girlMapScreen>{
                   children: <Widget>[
                     RaisedButton(
                       child: Text("Marker",
-                          style: TextStyle(color: Colors.black,
+                          style: TextStyle(
+                              color: Colors.black,
                               fontSize: 12,
                               fontFamily: "Montserrat",
-                              fontWeight: FontWeight.w400
-                          ),
+                              fontWeight: FontWeight.w400),
                           textAlign: TextAlign.center,
                           textScaleFactor: 2.0),
                       onPressed: _onAddMarkerButtonPressed,
@@ -99,11 +98,11 @@ class _girlMapScreenState extends State<girlMapScreen>{
                     ),*/
                     RaisedButton(
                         child: Text("Reload",
-                            style: TextStyle(color: Colors.black,
+                            style: TextStyle(
+                                color: Colors.black,
                                 fontSize: 12,
                                 fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w400
-                            ),
+                                fontWeight: FontWeight.w400),
                             textAlign: TextAlign.center,
                             textScaleFactor: 2.0),
                         onPressed: () {

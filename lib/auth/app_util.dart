@@ -10,7 +10,6 @@ class AppUtil {
     return _instance;
   }
 
-
   bool isNetworkWorking() {
     return networkStatus;
   }
@@ -23,6 +22,4 @@ class AppUtil {
         timeInSecForIos: 1,
         textcolor: '#ffffff');
   }
-
-
 }

@@ -29,19 +29,19 @@ class pushNotificationState extends State<pushNotification> {
     _firebaseMessaging.setAutoInitEnabled(true);
     _firebaseMessaging.configure(
         onMessage: (Map<String, dynamic> message) async {
-          var level1 = message['data']['level1'];
-          print("");
-          var level2 = message['data']['level2'];
-          var level3 = message['data']['level3'];
-          var pressedLevel = message['data']['pressedLevel'];
-          var batteryLevel = message['data']['battery'];
-          var girluserid = message['data']['girl_id'];
+      var level1 = message['data']['level1'];
+      print("");
+      var level2 = message['data']['level2'];
+      var level3 = message['data']['level3'];
+      var pressedLevel = message['data']['pressedLevel'];
+      var batteryLevel = message['data']['battery'];
+      var girluserid = message['data']['girl_id'];
 
-          if(pressedLevel == 'level1'){
-            print('on message $message');
-            showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
+      if (pressedLevel == 'level1') {
+        print('on message $message');
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
                   content: ListTile(
                     title: Text(message['notification']['title']),
                     subtitle: Text(message['notification']['body']),
@@ -53,11 +53,7 @@ class pushNotificationState extends State<pushNotification> {
                     )
                   ],
                 ));
-          }
-
-
-
-
+      }
 
       setState(() {
         print('hello inside setstate');

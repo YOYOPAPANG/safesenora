@@ -7,23 +7,21 @@ import 'package:location/location.dart';
 import 'package:prototype/util/getDrawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class protectorGirlScreen extends StatefulWidget {
-
   String girlid;
   String girlname;
   protectorGirlScreen(this.girlid, this.girlname);
 
   @override
-  _protectorGirlScreenState createState() => _protectorGirlScreenState(girlid, girlname);
+  _protectorGirlScreenState createState() =>
+      _protectorGirlScreenState(girlid, girlname);
 }
 
 class _protectorGirlScreenState extends State<protectorGirlScreen> {
   GoogleMapController mapController;
   FirebaseUser currentUser;
   LatLng _center;
-  double lat,
-      lng;
+  double lat, lng;
   var location;
   bool _isTrafficEnabled = true;
   Set<Marker> _markers = {};
@@ -35,7 +33,7 @@ class _protectorGirlScreenState extends State<protectorGirlScreen> {
   @override
   void initState() {
     super.initState();
-    FirebaseAuth.instance.currentUser().then((user){
+    FirebaseAuth.instance.currentUser().then((user) {
       currentUser = user;
     });
     print("in init state with lat $lat and $lng");
@@ -54,10 +52,12 @@ class _protectorGirlScreenState extends State<protectorGirlScreen> {
       }
     });
   }
+
   void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
     _center = LatLng(lat, lng);
   }
+
   static Future<void> openMap(double latitude, double longitude) async {
     String googleUrl =
         'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
@@ -68,26 +68,23 @@ class _protectorGirlScreenState extends State<protectorGirlScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     print("this is marker");
     print(_markers);
 
-    Widget loadprotectorgirlscreen(context, data){
+    Widget loadprotectorgirlscreen(context, data) {
       return Scaffold(
         drawer: getDrawer(currentUser, "protector").getdrawer(context),
-        appBar: AppBar(title: Text("$girlname's tracking details"),),
+        appBar: AppBar(
+          title: Text("$girlname's tracking details"),
+        ),
         body: Container(
           color: Color(0xffbd5559),
           child: Column(
             children: <Widget>[
               Container(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.6,
+                height: MediaQuery.of(context).size.height * 0.6,
                 child: GoogleMap(
                   //polylines: _polyline,
                   onMapCreated: _onMapCreated,
@@ -120,19 +117,18 @@ class _protectorGirlScreenState extends State<protectorGirlScreen> {
                 ],
               ),
               StreamBuilder<DocumentSnapshot>(
-                stream: Firestore.instance.collection('girl_user')
-                    .document(girlid)
-                    .collection('user_info')
-                    .document(girlid)
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  return Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text("Battery % -> ${snapshot.data["battery"]}"),
-                  );
-                }
-              )
-
+                  stream: Firestore.instance
+                      .collection('girl_user')
+                      .document(girlid)
+                      .collection('user_info')
+                      .document(girlid)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    return Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text("Battery % -> ${snapshot.data["battery"]}"),
+                    );
+                  })
             ],
           ),
         ),
@@ -140,7 +136,8 @@ class _protectorGirlScreenState extends State<protectorGirlScreen> {
     }
 
     return StreamBuilder<DocumentSnapshot>(
-      stream: Firestore.instance.collection('girl_user')
+      stream: Firestore.instance
+          .collection('girl_user')
           .document(girlid)
           .collection('location_info')
           .document(girlid)
@@ -162,11 +159,5 @@ class _protectorGirlScreenState extends State<protectorGirlScreen> {
         }
       },
     );
-
-
-
-
   }
 }
-
-

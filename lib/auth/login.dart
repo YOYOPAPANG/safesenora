@@ -448,7 +448,9 @@ class LoginScreenState extends State<LoginPage>
             children: <Widget>[
               _isPhoneAuthEnable
                   ? phoneAuthForm
-                  : _isEmailAuthEnable ? anonymouslyForm : googleForm,
+                  : _isEmailAuthEnable
+                      ? anonymouslyForm
+                      : googleForm,
               new Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

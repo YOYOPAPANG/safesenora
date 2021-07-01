@@ -3,7 +3,6 @@ library countdown.base;
 import "dart:async";
 
 class CountDown {
-
   /// reference point for start and resume
   DateTime _begin;
   Timer _timer;
@@ -12,17 +11,22 @@ class CountDown {
   bool isPaused = false;
   StreamController<Duration> _controller;
   Duration _refresh;
+
   /// provide a way to send less data to the client but keep the data of the timer up to date
   int _everyTick, counter = 0;
 
-
   /// once you instantiate the CountDown you need to register to receive information
-  CountDown(Duration duration, {Duration refresh: const Duration(milliseconds: 10), int everyTick: 1}) {
+  CountDown(Duration duration,
+      {Duration refresh: const Duration(milliseconds: 10), int everyTick: 1}) {
     _refresh = refresh;
     _everyTick = everyTick;
 
     this._duration = duration;
-    _controller = new StreamController<Duration>(onListen: _onListen, onPause: _onPause, onResume: _onResume, onCancel: _onCancel);
+    _controller = new StreamController<Duration>(
+        onListen: _onListen,
+        onPause: _onPause,
+        onResume: _onResume,
+        onCancel: _onCancel);
   }
 
   Stream<Duration> get stream => _controller.stream;
@@ -79,5 +83,4 @@ class CountDown {
       }
     }
   }
-
 }

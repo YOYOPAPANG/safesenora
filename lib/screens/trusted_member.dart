@@ -194,7 +194,7 @@ class _trustedMemberPageState extends State<trustedMemberPage> {
                                 if (_formKey.currentState.validate()) {
                                   //print("form validated");
                                   _formKey.currentState.save();
-                                  setInProtectorList(mem_id,user.uid);
+                                  setInProtectorList(mem_id, user.uid);
                                   //print("current name is $mem_name");
                                   //print("current id is $mem_id");
                                   //print("current surname is $mem_surname");
@@ -239,7 +239,8 @@ class _trustedMemberPageState extends State<trustedMemberPage> {
         .document(userId)
         .delete();
   }
-  void setInProtectorList(proid,userId){
+
+  void setInProtectorList(proid, userId) {
     Firestore.instance
         .collection('protector')
         .document(proid)
@@ -286,7 +287,7 @@ class _trustedMemberPageState extends State<trustedMemberPage> {
                             'identifier': docidentifier
                           }, merge: true);
                           //Adding to protector's girl_list
-                          setInProtectorList(docid,user.uid);
+                          setInProtectorList(docid, user.uid);
                         });
                       }),
                 ),
